@@ -5828,6 +5828,24 @@ async def add_shortcut(event):
         await event.edit(f"**⎙ تم حفظ الاختصار ({key}) ⇨ {reply_message.text}**")
     else:
         await event.edit("**⎙ يجب الرد على رسالة لاختصارها.**")
+        
+@client.on(events.NewMessage(from_users='me', pattern=r'\.وورم (.+)'))
+async def worm_ai_chat(event):
+    await event.delete()
+    try:
+        user_text = event.pattern_match.group(1)
+        api_url = f"http://api-iyad.ct.ws/chat/worm.php?text={user_text}"
+
+        async with aiohttp.ClientSession() as session:
+            async with session.get(api_url) as resp:
+                if resp.status == 200:
+                    data = await resp.json()
+                    response_text = data.get("response", "❌ لم يتم العثور على رد.")
+                    await event.respond(f"🤖 {response_text}")
+                else:
+                    await event.respond("❌ حدث خطأ في الاتصال بـ API.")
+    except Exception as e:
+        await event.respond(f"⎙ حدث خطأ أثناء المعالجة: {str(e)}")        
 
 @client.on(events.NewMessage)
 async def get_shortcut(event):
