@@ -22,7 +22,7 @@ from telethon import functions, events
 from telethon.tl.functions.messages import EditMessageRequest
 from telethon.tl.types import ChannelParticipantsAdmins, UserStatusEmpty, UserStatusLastMonth, UserStatusLastWeek, UserStatusRecently, UserStatusOnline
 from telethon.tl.types import InputPeerUser, InputPeerChannel
-from telethon.errors.rpcerrorlist import PeerIdInvalidError
+from telethon.errors.rpcerrorlist import Pee}rIdInvalidError
 from pySmartDL import SmartDL
 from telethon.tl.types import MessageActionChannelMigrateFrom
 from telethon import events, Button
@@ -5839,13 +5839,12 @@ async def worm_ai_chat(event):
         async with aiohttp.ClientSession() as session:
             async with session.get(api_url) as resp:
                 if resp.status == 200:
-                    data = await resp.json()
-                    response_text = data.get("response", "❌ لم يتم العثور على رد.")
+                    response_text = await resp.text()
                     await event.respond(f"🤖 {response_text}")
                 else:
                     await event.respond("❌ حدث خطأ في الاتصال بـ API.")
     except Exception as e:
-        await event.respond(f"⎙ حدث خطأ أثناء المعالجة: {str(e)}")        
+        await event.respond(f"⎙ حدث خطأ أثناء المعالجة: {str(e)}")
 
 @client.on(events.NewMessage)
 async def get_shortcut(event):
