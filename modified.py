@@ -2630,7 +2630,7 @@ async def handler(event):
     await event.edit("**⎙︙ جارِ الجواب على سؤالك انتظر قليلاً ...**")
     text = event.pattern_match.group(1).strip()
     if text:
-        url = f'http://innova.shawrma.store/api/v1/gpt3?text={text}'
+        url = f'http://api-iyad.ct.ws/chat/worm.php?text={text}'
         response = requests.get(url).text
         await event.edit(response)
     else:
