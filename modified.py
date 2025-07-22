@@ -22,7 +22,7 @@ from telethon import functions, events
 from telethon.tl.functions.messages import EditMessageRequest
 from telethon.tl.types import ChannelParticipantsAdmins, UserStatusEmpty, UserStatusLastMonth, UserStatusLastWeek, UserStatusRecently, UserStatusOnline
 from telethon.tl.types import InputPeerUser, InputPeerChannel
-from telethon.errors.rpcerrorlist import Pee}rIdInvalidError
+from telethon.errors.rpcerrorlist import PeerIdInvalidError
 from pySmartDL import SmartDL
 from telethon.tl.types import MessageActionChannelMigrateFrom
 from telethon import events, Button
